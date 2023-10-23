@@ -4,14 +4,14 @@ import HomePage from "./pages/homePage";
 import RegistrationPage from "./pages/registrationPage";
 import LoginPage from "./pages/loginPage";
 import Header from "./components/header";
-import PostPage from "./pages/allBookPage";
+import BookPage from "./pages/allBookPage";
 import NotFoundPage from "./pages/notFoundPage";
-import AddPost from "./pages/addPost";
-import UserDetailsPage from "./pages/userDetailsPage";
+import UserDetailsPage from "./pages/bookDetailsPage";
 import UserList from "./components/UserList";
 import Footer from "./components/footer";
 import Authenticate from "./components/authenticate";
 import SearchPage from "./pages/searchPage";
+import AddBook from "./pages/addBook";
 
 function App() {
   return (
@@ -23,10 +23,10 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route element={<Authenticate />}>
           <Route path="/user" element={<UserList />} />
-          <Route path="/user/:userId" element={<UserDetailsPage />} />
+          <Route path="/book/:bookId" element={<UserDetailsPage />} />
           <Route path="/users/search" element={<SearchPage />} />
-          <Route path="/post" element={<PostPage />} />
-          <Route path="/postAdd" element={<AddPost />} />
+          <Route path="/book/all" element={<BookPage />} />
+          <Route path="/book/create" element={<AddBook />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

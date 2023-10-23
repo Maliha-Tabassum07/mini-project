@@ -1,20 +1,28 @@
-import usePostHook from "../hooks/usePostHook";
+import useBookHook from "../hooks/useBookHook";
+import { useNavigate } from "react-router-dom";
+import "./BookList.css";
 
-const PostList = () => {
-  const { posts, handleSubmit, errors } = usePostHook();
+const BookList = () => {
+  const navigate = useNavigate();
+  const { books, handleSubmit, errors } = useBookHook();
 
   return (
-    <div
-      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
-    >
-      {/* PostList <button onClick={handleSubmit}>Test</button> */}
-      {posts &&
-        posts.map((posts, i) => {
+    <div className="book-list-container">
+      {books &&
+        books.map((book) => {
           return (
-            <div key={i}>
-              <h3>Title: {posts.title}</h3>
-              <p>Post: {posts.body}</p>
-              <p>Reactions:{posts.reactions}</p>
+            <div key={book.bookId} className="book-card">
+              <div className="image-container">
+                <img src={book.url} alt="Book Cover" className="book-image" />
+                <button
+                  onClick={() => navigate(`/book/${book.bookId}`)}
+                  className="details-button"
+                >
+                  Details
+                </button>
+              </div>
+              <h4>Title: {book.name}</h4>
+              <h6>Author: {book.author}</h6>
             </div>
           );
         })}
@@ -22,4 +30,4 @@ const PostList = () => {
   );
 };
 
-export default PostList;
+export default BookList;

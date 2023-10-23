@@ -1,0 +1,58 @@
+/* BookList.css */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+.book-list-container {
+    font-family: 'Playfair Display', serif; /* Use Playfair Display font */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: #9E9D9D;
+    padding: 20px;
+  }
+  
+  .book-card {
+    border: 1px solid #959595;
+    padding: 10px;
+    margin: 10px;
+    width: 350px; /* Increase the width of the card */
+    max-height: 380px; /* Increase the height of the card */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    transition: transform 0.3s;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space between image and details */
+  }
+  .book-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .book-card h3 {
+    margin: 0;
+  }
+  
+  .image-container {
+    position: relative;
+  }
+  
+  .book-image {
+    max-width: 100%;
+    max-height: 200px;
+    height: auto;
+  }
+  
+  .details-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #737272;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .details-button:hover {
+    background-color: #A5A4A4;
+  }
+  

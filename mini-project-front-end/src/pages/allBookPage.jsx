@@ -1,13 +1,13 @@
-import PostList from "../components/bookList";
+import BookList from "../components/bookList";
 
-const HomePage = () => {
+const AllBookPage = () => {
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>All Books</h1>
 
-      <PostList />
+      <BookList />
     </div>
   );
 };
 
-export default HomePage;
+export default AllBookPage;

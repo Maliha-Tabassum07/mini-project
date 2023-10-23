@@ -66,7 +66,7 @@ const LoginPage = () => {
 
     setIsLoading(true);
     axiosInstance
-      .post("/login", data)
+      .post("/users/login", data)
       .then((resp) => {
         console.log("Login Response", resp);
         localStorage.setItem("token", resp.data.Authorization);

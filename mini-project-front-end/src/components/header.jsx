@@ -57,12 +57,12 @@ const Header = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/post" className="nav-link text-light">
+                <Link to="/book/all" className="nav-link text-light">
                   All Books
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/postAdd" className="nav-link text-light">
+                <Link to="/book/create" className="nav-link text-light">
                   Add Book
                 </Link>
               </li>
