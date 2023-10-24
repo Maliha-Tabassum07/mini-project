@@ -1,49 +1,3 @@
-// import { useState } from "react";
-// import axiosInstance from "../utils/axiosInstance";
-// import { useNavigate } from "react-router-dom";
-
-// const LoginPage = () => {
-//   const navigate = useNavigate();
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-
-//   const handleLogin = (e) => {
-//     e.preventDefault();
-//     console.log("Loggin in");
-
-//     const userCredential = {
-//       email,
-//       password,
-//     };
-
-//     axiosInstance.post("/login", userCredential).then((resp) => {
-//       const data = resp.data;
-//       console.log("Response from login ", data.Authorization);
-//       localStorage.setItem("token", data.Authorization);
-//       navigate("/");
-//     });
-//   };
-
-//   return (
-//     <div>
-//       <h1>Login Page</h1>
-//       <form onSubmit={handleLogin}>
-//         <div>
-//           <h4>Email</h4>
-//           <input placeholder="Enter email" />
-//         </div>
-//         <div>
-//           <h4>Password</h4>
-//           <input placeholder="Enter Password" />
-//         </div>
-
-//         <button type="submit">Login</button>
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default LoginPage;
 import { useState } from "react";
 import axiosInstance from "../utils/axiosInstance";
 import { useNavigate } from "react-router-dom";
@@ -70,6 +24,8 @@ const LoginPage = () => {
       .then((resp) => {
         console.log("Login Response", resp);
         localStorage.setItem("token", resp.data.Authorization);
+        localStorage.setItem("role", resp.data.role);
+        localStorage.setItem("userId", resp.data.userId);
         navigate("/"); // Redirect to the dashboard after successful login.
       })
       .catch((error) => {

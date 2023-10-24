@@ -6,12 +6,18 @@ import LoginPage from "./pages/loginPage";
 import Header from "./components/header";
 import BookPage from "./pages/allBookPage";
 import NotFoundPage from "./pages/notFoundPage";
-import UserDetailsPage from "./pages/bookDetailsPage";
+import UserDetailsPage from "./pages/userDetailsPage";
+import BookDetailsPage from "./pages/bookDetailsPage";
 import UserList from "./components/UserList";
 import Footer from "./components/footer";
 import Authenticate from "./components/authenticate";
 import SearchPage from "./pages/searchPage";
 import AddBook from "./pages/addBook";
+import BorrowPage from "./pages/borrowPage";
+import ReturnPage from "./pages/returnPage";
+import CurrentBorrowedPage from "./pages/currentBorrowedPage";
+import UpdateBook from "./components/updateBook";
+import DeleteBook from "./components/deleteBook";
 
 function App() {
   return (
@@ -23,7 +29,16 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route element={<Authenticate />}>
           <Route path="/user" element={<UserList />} />
-          <Route path="/book/:bookId" element={<UserDetailsPage />} />
+          <Route path="/user/:userId" element={<UserDetailsPage />} />
+          <Route path="/book/:bookId" element={<BookDetailsPage />} />
+          <Route path="/book/:bookId/borrow" element={<BorrowPage />} />
+          <Route path="/book/:bookId/return" element={<ReturnPage />} />
+          <Route
+            path="/:userId/current/borrow"
+            element={<CurrentBorrowedPage />}
+          />
+          <Route path="/book/:bookId/update" element={<UpdateBook />} />
+          <Route path="/book/:bookId/delete" element={<DeleteBook />} />
           <Route path="/users/search" element={<SearchPage />} />
           <Route path="/book/all" element={<BookPage />} />
           <Route path="/book/create" element={<AddBook />} />

@@ -5,12 +5,13 @@ import { Link, useNavigate } from "react-router-dom";
 const Header = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
+  const role = localStorage.getItem("role");
+  const userId = localStorage.getItem("userId");
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-dark">
       <Link className="navbar-brand text-light" to="/">
         Online Library
       </Link>
-
       <button
         className="navbar-toggler"
         type="button"
@@ -44,7 +45,28 @@ const Header = () => {
               </li>
             </>
           )}
+          {token && role === "CUSTOMER" && (
+            <>
+              <li className="nav-item">
+                <Link
+                  to="/${userId}`/current/borrow"
+                  className="nav-link text-light"
+                >
+                  Dashboard
+                </Link>
+              </li>
+            </>
+          )}
           {token && (
+            <>
+              <li className="nav-item">
+                <Link to="/book/all" className="nav-link text-light">
+                  All Books
+                </Link>
+              </li>
+            </>
+          )}
+          {token && role === "ADMIN" && (
             <>
               <li className="nav-item">
                 <Link to="/user" className="nav-link text-light">
@@ -54,11 +76,6 @@ const Header = () => {
               <li className="nav-item">
                 <Link to="/users/search" className="nav-link text-light">
                   Search User
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/book/all" className="nav-link text-light">
-                  All Books
                 </Link>
               </li>
               <li className="nav-item">

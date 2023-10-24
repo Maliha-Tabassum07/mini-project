@@ -1,17 +1,18 @@
 import axiosInstance from "../utils/axiosInstance";
 import { useEffect, useState } from "react";
 
-const useUserHook = () => {
-  const [users, setUsers] = useState([]);
+const useBorrowedBookHook = () => {
+  const userId = localStorage.getItem("userId");
+  const [borrows, setBorrows] = useState([]);
   const [errors, setErrors] = useState();
 
   useEffect(() => {
     axiosInstance
-      .get("/users/all")
+      .get(`/users/${userId}/borrowed-books`)
       .then((resp) => {
         const data = resp.data;
         console.log("Data ", data);
-        setUsers(data);
+        setBorrows(data);
       })
       .catch((error) => {
         console.log(error);
@@ -23,7 +24,7 @@ const useUserHook = () => {
     console.log("Submitting from custom hook");
   };
 
-  return { users, handleSubmit, errors };
+  return { borrows, handleSubmit, errors };
 };
 
-export default useUserHook;
+export default useBorrowedBookHook;

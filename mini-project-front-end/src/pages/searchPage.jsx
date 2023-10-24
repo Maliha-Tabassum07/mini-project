@@ -44,13 +44,10 @@ const SearchPage = () => {
 
       <h1>The details:</h1>
       <div>
-        <h3>Name: {userDetails?.firstName}</h3>
-        <h3>Email: {userDetails?.email}</h3>
-        <h3>Gender:{userDetails?.gender}</h3>
-        <h3>Age: {userDetails?.age}</h3>
-        <h3>User Name:{userDetails?.username}</h3>
-        <h3>Date of Birth: {userDetails?.birthDate}</h3>
-        <img src={userDetails?.image} />
+        <h3>First Name: {userDetails?.firstName}</h3>
+        <h3>Last Name: {userDetails?.lastName}</h3>
+        <h3>Email Address:{userDetails?.email}</h3>
+        <h3>Current Address: {userDetails?.address}</h3>
       </div>
     </div>
   );

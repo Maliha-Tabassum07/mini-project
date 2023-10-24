@@ -9,17 +9,13 @@ const UserList = () => {
     <div
       style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
-      {/* UserList <button onClick={handleSubmit}>Test</button> */}
       {users &&
-        users.map((user, i) => {
+        users.map((user) => {
           return (
-            <div key={i}>
-              <h1>First Name:{user.firstName}</h1>
-              <h3>Last Name: {user.email}</h3>
-              <h3>Email: {user.age}</h3>
-              <h3>Address: {user.age}</h3>
-              <img src={user.image} alt="" />
-              <button onClick={() => navigate(`/user/${user.id}`)}>
+            <div key={user.userId}>
+              <h2>User Id: {user.userId}</h2>
+              <h3>Email: {user.email}</h3>
+              <button onClick={() => navigate(`/user/${user.userId}`)}>
                 Details
               </button>
             </div>

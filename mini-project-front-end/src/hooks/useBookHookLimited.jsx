@@ -1,17 +1,17 @@
 import axiosInstance from "../utils/axiosInstance";
 import { useEffect, useState } from "react";
 
-const useUserHook = () => {
-  const [users, setUsers] = useState([]);
+const useBookHookLimited = () => {
+  const [books, setBooks] = useState([]);
   const [errors, setErrors] = useState();
 
   useEffect(() => {
     axiosInstance
-      .get("/users/all")
+      .get("/book/all")
       .then((resp) => {
         const data = resp.data;
         console.log("Data ", data);
-        setUsers(data);
+        setBooks(data.slice(0,4));
       })
       .catch((error) => {
         console.log(error);
@@ -23,7 +23,7 @@ const useUserHook = () => {
     console.log("Submitting from custom hook");
   };
 
-  return { users, handleSubmit, errors };
+  return { books, handleSubmit, errors };
 };
 
-export default useUserHook;
+export default useBookHookLimited;

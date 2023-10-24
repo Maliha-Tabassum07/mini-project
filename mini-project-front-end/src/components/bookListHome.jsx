@@ -1,10 +1,10 @@
-import useBookHook from "../hooks/useBookHook";
 import { useNavigate } from "react-router-dom";
 import "./BookList.css";
+import useBookHookLimited from "../hooks/useBookHookLimited";
 
-const BookList = () => {
+const BookListHome = () => {
   const navigate = useNavigate();
-  const { books, handleSubmit, errors } = useBookHook();
+  const { books, handleSubmit, errors } = useBookHookLimited();
 
   return (
     <div className="book-list-container">
@@ -14,16 +14,9 @@ const BookList = () => {
             <div key={book.bookId} className="book-card">
               <div className="image-container">
                 <img src={book.url} alt="Book Cover" className="book-image" />
-                <button
-                  onClick={() => navigate(`/book/${book.bookId}`)}
-                  className="details-button"
-                >
-                  Details
-                </button>
               </div>
               <h4>Title: {book.name}</h4>
               <h6>Author: {book.author}</h6>
-              <h6>Status: {book.available}</h6>
             </div>
           );
         })}
@@ -31,4 +24,4 @@ const BookList = () => {
   );
 };
 
-export default BookList;
+export default BookListHome;
