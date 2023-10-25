@@ -29,7 +29,7 @@ const RegistrationForm = () => {
 
     setIsLoading(true);
     axiosInstance
-      .post("users/register", data)
+      .post("/users/register", data)
       .then((resp) => {
         console.log("The Response", resp);
         setIsRegistrationDone(true);

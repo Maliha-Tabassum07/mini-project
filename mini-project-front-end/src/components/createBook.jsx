@@ -32,7 +32,7 @@ const CreateBook = () => {
       .then((resp) => {
         console.log("The Response", resp);
         setIsPostDone(true);
-        navigate("/");
+        navigate("/book/all");
         // setIsLoading(false);
       })
       .catch((error) => {

@@ -1,15 +1,19 @@
-import BookListHome from "../components/bookListHome";
+import React from "react";
+import BookListHome from "../components/BookListHome";
 
 const HomePage = () => {
   return (
-    <div>
-      <div>
-        <h1 style={{ textAlign: "center" }}>Home page</h1>
-      <h6 style={{ textAlign: "center" }}>Here you will get to borrow books from the various collection of books available </h6>
-      <h6 style={{ textAlign: "center" }}>So start reading right now</h6>
+    <div className="container mt-4">
+      <div className="row">
+        <div className="col">
+          <h1 className="text-center mb-4">Welcome to Book Worm!</h1>
+        </div>
       </div>
-      
-      <BookListHome />
+      <div className="row">
+        <div className="col">
+          <BookListHome />
+        </div>
+      </div>
     </div>
   );
 };

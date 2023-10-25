@@ -1,16 +1,24 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link, useNavigate } from "react-router-dom";
+import "./Header.css";
 
 const Header = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   const role = localStorage.getItem("role");
+  console.log("Pore role: " + role);
   const userId = localStorage.getItem("userId");
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-light bg-dark custom-navbar">
       <Link className="navbar-brand text-light" to="/">
-        Online Library
+        Book Worm
       </Link>
       <button
         className="navbar-toggler"
@@ -49,10 +57,23 @@ const Header = () => {
             <>
               <li className="nav-item">
                 <Link
-                  to="/${userId}`/current/borrow"
+                  to={`/${userId}/current/borrow`}
                   className="nav-link text-light"
                 >
                   Dashboard
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  to={`user/${userId}/history`}
+                  className="nav-link text-light"
+                >
+                  History
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to={`/user/${userId}`} className="nav-link text-light">
+                  Profile
                 </Link>
               </li>
             </>
@@ -86,14 +107,15 @@ const Header = () => {
             </>
           )}
           {token && (
-            <button
-              onClick={() => {
-                localStorage.removeItem("token");
-                navigate("/login");
-              }}
-            >
-              Logout
-            </button>
+            <li className="nav-item ml-auto">
+              <Link
+                to="/login"
+                className="nav-link text-light"
+                onClick={handleLogout}
+              >
+                Logout
+              </Link>
+            </li>
           )}
         </ul>
       </div>

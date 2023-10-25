@@ -17,7 +17,10 @@ import BorrowPage from "./pages/borrowPage";
 import ReturnPage from "./pages/returnPage";
 import CurrentBorrowedPage from "./pages/currentBorrowedPage";
 import UpdateBook from "./components/updateBook";
+import ReviewForm from "./components/reviewForm";
 import DeleteBook from "./components/deleteBook";
+import ReviewPage from "./pages/reviewPage";
+import UserHistoryPage from "./pages/userHistoryPage";
 
 function App() {
   return (
@@ -30,6 +33,7 @@ function App() {
         <Route element={<Authenticate />}>
           <Route path="/user" element={<UserList />} />
           <Route path="/user/:userId" element={<UserDetailsPage />} />
+          <Route path="/user/:userId/history" element={<UserHistoryPage />} />
           <Route path="/book/:bookId" element={<BookDetailsPage />} />
           <Route path="/book/:bookId/borrow" element={<BorrowPage />} />
           <Route path="/book/:bookId/return" element={<ReturnPage />} />
@@ -37,6 +41,8 @@ function App() {
             path="/:userId/current/borrow"
             element={<CurrentBorrowedPage />}
           />
+          <Route path="/book/:bookId/reviews/create" element={<ReviewForm />} />
+          <Route path="/book/:bookId/reviews" element={<ReviewPage />} />
           <Route path="/book/:bookId/update" element={<UpdateBook />} />
           <Route path="/book/:bookId/delete" element={<DeleteBook />} />
           <Route path="/users/search" element={<SearchPage />} />

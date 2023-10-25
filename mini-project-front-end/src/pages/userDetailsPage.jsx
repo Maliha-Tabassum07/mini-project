@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axiosInstance from "../utils/axiosInstance";
 import "./BookDetailsPage.css"; // Import the CSS file
 
 const UserDetailsPage = () => {
+  const navigate = useNavigate();
   const { userId } = useParams();
   const [userDetails, setUserDetails] = useState();
 
@@ -17,12 +18,15 @@ const UserDetailsPage = () => {
   return (
     <div className="container">
       <h1>USER ID: {userId}</h1>
-      <div >
+      <div>
         <h3>First Name: {userDetails?.firstName}</h3>
         <h3>Last Name: {userDetails?.lastName}</h3>
         <h3>Email Address: {userDetails?.email}</h3>
         <h3>Current Address: {userDetails?.address}</h3>
       </div>
+      <button className="back-button" onClick={() => navigate("/")}>
+        &larr; Back
+      </button>
     </div>
   );
 };

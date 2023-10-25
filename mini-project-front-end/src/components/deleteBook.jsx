@@ -42,7 +42,12 @@ const DeleteBook = () => {
       {isLoading && <h1>Loading.....</h1>}
       <form onSubmit={handlePost}>
         <h3>Are you sure you want to delete the book?</h3>
-        <button type="submit">Yes</button>
+        <button
+          type="submit"
+          style={{ backgroundColor: "red", color: "white" }}
+        >
+          Yes
+        </button>
       </form>
       {/* Back button */}
       <button className="back-button" onClick={() => navigate(-1)}>

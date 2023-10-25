@@ -8,7 +8,6 @@ const BookDetailsPage = () => {
   const role = localStorage.getItem("role");
   const { bookId } = useParams();
   const [bookDetails, setBookDetails] = useState();
-
   useEffect(() => {
     axiosInstance.get(`/book/get/${bookId}`).then((resp) => {
       const data = resp.data;
@@ -32,18 +31,26 @@ const BookDetailsPage = () => {
 
         {role === "ADMIN" ? (
           <>
-            <button
-              onClick={() => navigate(`/book/${bookDetails?.bookId}/update`)}
-              className="action-button"
-            >
-              Edit
-            </button>
-            <button
-              onClick={() => navigate(`/book/${bookDetails?.bookId}/delete`)}
-              className="action-button"
-            >
-              Delete
-            </button>
+            <div>
+              <button
+                onClick={() => navigate(`/book/${bookDetails?.bookId}/update`)}
+                className="action-button"
+              >
+                Edit
+              </button>
+              <button
+                onClick={() => navigate(`/book/${bookDetails?.bookId}/reviews`)}
+                className="action-button"
+              >
+                View Review
+              </button>
+              <button
+                onClick={() => navigate(`/book/${bookDetails?.bookId}/delete`)}
+                className="action-button"
+              >
+                Delete
+              </button>
+            </div>
           </>
         ) : (
           <>
@@ -61,10 +68,24 @@ const BookDetailsPage = () => {
             )}
 
             {/* Add Review Button */}
-            <button className="action-button">Add Review</button>
+            <button
+              className="action-button"
+              onClick={() =>
+                navigate(`/book/${bookDetails?.bookId}/reviews/create`)
+              }
+            >
+              Add Review
+            </button>
+            <button
+              onClick={() => navigate(`/book/${bookDetails?.bookId}/reviews`)}
+              className="action-button"
+            >
+              View Review
+            </button>
           </>
         )}
       </div>
+
       {/* Back button */}
       <button className="back-button" onClick={() => navigate(-1)}>
         &larr; Back

@@ -55,4 +55,11 @@
   .details-button:hover {
     background-color: #A5A4A4;
   }
+  .red-status {
+    color: red;
+  }
+  
+  .green-status {
+    color: green;
+  }
   
