@@ -34,7 +34,8 @@ const SearchPage = () => {
       <h1>Search User</h1>
       <input
         value={searchText}
-        placeholder="Enter search key"
+        placeholder="Enter user ID"
+        style={{ width: "300px" }} // Set the width of the input field
         onChange={(e) => {
           setSearchText(e.target.value);
         }}
@@ -46,7 +47,7 @@ const SearchPage = () => {
       <div>
         <h3>First Name: {userDetails?.firstName}</h3>
         <h3>Last Name: {userDetails?.lastName}</h3>
-        <h3>Email Address:{userDetails?.email}</h3>
+        <h3>Email Address: {userDetails?.email}</h3>
         <h3>Current Address: {userDetails?.address}</h3>
       </div>
     </div>

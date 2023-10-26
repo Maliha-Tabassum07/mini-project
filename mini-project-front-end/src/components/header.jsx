@@ -1,6 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link, useNavigate } from "react-router-dom";
+import { Dropdown } from "react-bootstrap";
 import "./Header.css";
 
 const Header = () => {
@@ -56,6 +57,18 @@ const Header = () => {
           {token && role === "CUSTOMER" && (
             <>
               <li className="nav-item">
+                <Link to="/book/all" className="nav-link text-light">
+                  All Books
+                </Link>
+              </li>
+            </>
+          )}
+          {token && role === "CUSTOMER" && (
+            <>
+              <li className="nav-item">
+                {/* <Link to="/book/all" className="nav-link text-light">
+                  All Books
+                </Link> */}
                 <Link
                   to={`/${userId}/current/borrow`}
                   className="nav-link text-light"
@@ -63,31 +76,22 @@ const Header = () => {
                   Dashboard
                 </Link>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link
                   to={`user/${userId}/history`}
                   className="nav-link text-light"
                 >
                   History
                 </Link>
-              </li>
-              <li className="nav-item">
+              </li> */}
+              {/* <li className="nav-item">
                 <Link to={`/user/${userId}`} className="nav-link text-light">
                   Profile
                 </Link>
-              </li>
+              </li> */}
             </>
           )}
-          {token && (
-            <>
-              <li className="nav-item">
-                <Link to="/book/all" className="nav-link text-light">
-                  All Books
-                </Link>
-              </li>
-            </>
-          )}
-          {token && role === "ADMIN" && (
+          {/* {token && role === "ADMIN" && (
             <>
               <li className="nav-item">
                 <Link to="/user" className="nav-link text-light">
@@ -105,6 +109,51 @@ const Header = () => {
                 </Link>
               </li>
             </>
+          )} */}
+          {token && role === "CUSTOMER" && (
+            <Dropdown className="custom-dropdown">
+              <Dropdown.Toggle variant="dark" id="dropdown-basic">
+                Account
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item as={Link} to={`/user/${userId}`}>
+                  Profile
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to={`user/${userId}/history`}>
+                  History
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          )}
+          {token && role === "ADMIN" && (
+            <Dropdown className="custom-dropdown">
+              <Dropdown.Toggle variant="dark" id="dropdown-basic">
+                Book Management
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item as={Link} to="/book/all">
+                  Book List
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to="/book/create">
+                  Create Book
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          )}
+          {token && role === "ADMIN" && (
+            <Dropdown className="custom-dropdown">
+              <Dropdown.Toggle variant="dark" id="dropdown-basic">
+                User Management
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item as={Link} to="/user">
+                  User List
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to="/users/search">
+                  Search User
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           )}
           {token && (
             <li className="nav-item ml-auto">
